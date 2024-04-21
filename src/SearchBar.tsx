@@ -75,6 +75,7 @@ export const SearchBar = (props: SearchBarProps) => {
         margin={{ base: "0 auto", md: "0" }}
         borderColor="brand.blue"
         borderWidth="2px"
+        backgroundColor="white"
         onChange={handleCategoryChange}
         _hover={{
           borderColor: "brand.blue",

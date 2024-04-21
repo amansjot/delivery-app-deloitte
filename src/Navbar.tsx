@@ -86,7 +86,7 @@ export const Navbar = () => {
             }}
             transition={{ base: "0s", lg: "0.3s ease" }}
           >
-            View Listings
+            Our Products
           </Text>
         </Link>
         <Link to="/sell" onClick={() => handleNavigate("/sell")}>
@@ -106,7 +106,7 @@ export const Navbar = () => {
             }}
             transition={{ base: "0s", lg: "0.3s ease" }}
           >
-            Sell an Item
+            Your Saved Lists
           </Text>
         </Link>
       </Stack>

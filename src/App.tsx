@@ -5,7 +5,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ChatBot } from "./ChatBot";
@@ -33,7 +32,6 @@ export const App = () => {
     <Router basename={baseUrl}>
       <ScrollToTop />
       <Navbar />
-      <Box height="80px" w="100%" backgroundColor="transparent"></Box>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/listings" element={<Listings />} />

@@ -13,8 +13,6 @@ import {
   Box,
   Flex,
   HStack,
-  ListItem,
-  UnorderedList,
   CardFooter,
   Select,
 } from "@chakra-ui/react";
@@ -28,7 +26,7 @@ export const ShowListings = (
   category = "",
   numListings?: number
 ) => {
-  const listingbg = useColorModeValue("blue.50", "blue.800");
+  const listingbg = useColorModeValue("white", "blue.800");
   const listingtxt = useColorModeValue("black", "white");
   const listingborder = useColorModeValue("blue.600", "blue.900");
   const priceText = useColorModeValue("green.600", "green.200");
@@ -37,6 +35,8 @@ export const ShowListings = (
 
   type SortType = "recent" | "price";
   const [sort, setSort] = React.useState<SortType>("recent");
+  
+  console.log(sort);
 
   const broadenResults = () => {
     navigate("/listings?q=" + query + "&c=");
@@ -46,41 +46,11 @@ export const ShowListings = (
     navigate("/listings?q=&c=" + category);
   };
 
-  const getTimePassed = (dateStr: string): string => {
-    let timePassed = "";
-
-    const now = new Date();
-    const past = new Date(dateStr);
-    const diff = now.getTime() - past.getTime();
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(hours / 24);
-    const weeks = Math.floor(days / 7);
-    const months = Math.floor(days / 30);
-
-    if (hours < 24) {
-      timePassed = `${hours} hour`;
-    } else if (days < 21) {
-      timePassed = `${days} day`;
-    } else if (weeks < 6) {
-      timePassed = `${weeks} week`;
-    } else {
-      timePassed = `${months} month`;
-    }
-
-    timePassed += (timePassed.startsWith("1 ") ? "" : "s") + " ago";
-    return timePassed;
-  };
-
   const formatCurrency = (value: number): string => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
     }).format(value);
-  };
-
-  const messageSeller = (name: string, email: string) => {
-    alert("Contacting " + name + " (" + email + ")");
   };
 
   let listingsArray: Listing[] = [...listings];
@@ -102,19 +72,6 @@ export const ShowListings = (
   const sortCards = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(event.target.value as SortType);
   };
-
-  /* sort according to selection */
-  if (sort === "recent") {
-    listingsArray.sort((a: Listing, b: Listing): number => {
-      const aDate = new Date(a.date).getTime();
-      const bDate = new Date(b.date).getTime();
-      return bDate - aDate;
-    });
-  } else if (sort === "price") {
-    listingsArray.sort((a: Listing, b: Listing): number => {
-      return a.price - b.price;
-    });
-  }
   
 
   /* truncate listings for homepage */
@@ -149,7 +106,7 @@ export const ShowListings = (
               Search {query ? '"' + query + '" in' : ""} All Categories
             </Button>
             <Button p="6" onClick={searchAllCategory}>
-              View all listings in{" "}
+              View all products in{" "}
               {category.charAt(0).toUpperCase() + category.slice(1)}
             </Button>
           </Stack>
@@ -173,10 +130,10 @@ export const ShowListings = (
       <Flex wrap="wrap" justifyContent="center">
         {listingsArray.map((listing: Listing) => {
           return (
-            <Box minWidth="sm" height="550px" mb="6">
+            <Box minWidth="sm" height="480px" mb="-50px">
               <Card
                 width="sm"
-                height="100%"
+                height="85%"
                 bg={listingbg}
                 color={listingtxt}
                 borderWidth="1px"
@@ -186,7 +143,7 @@ export const ShowListings = (
               >
                 <CardBody>
                   <Image
-                    h="225px"
+                    h="195px"
                     m="0 auto"
                     src={listing.image[0]}
                     alt={`Image for ` + listing.title}
@@ -222,34 +179,14 @@ export const ShowListings = (
                         )}
                       </Text>
                     </HStack>
-                    <Text color="gray.500" fontSize="md">
-                      {getTimePassed(listing.date)} • {listing.location}
-                    </Text>
-                    <Text>
-                      <UnorderedList>
-                        {listing.description.map(
-                          (item: string): JSX.Element => {
-                            return <ListItem>{item}</ListItem>;
-                          }
-                        )}
-                      </UnorderedList>
-                    </Text>
+                    {/* <Text color="gray.500" fontSize="md">
+                      {listing.location}
+                    </Text> */}
                   </Stack>
                 </CardBody>
                 <CardFooter mt="-10">
                   <ButtonGroup mt="5" spacing="2">
-                    <Button colorScheme="blue">Add to Cart</Button>
-                    <Button
-                      colorScheme="green"
-                      onClick={() => {
-                        messageSeller(
-                          listing.seller.name,
-                          listing.seller.email
-                        );
-                      }}
-                    >
-                      Contact Seller
-                    </Button>
+                    <Button colorScheme="blue">Add to Order</Button>
                   </ButtonGroup>
                 </CardFooter>
               </Card>
@@ -262,18 +199,17 @@ export const ShowListings = (
 };
 
 const Listings = () => {
-  const mainbg = useColorModeValue("white", "gray.800");
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
   const category = searchParams.get("c") || "";
 
   return (
-    <div>
-      <Stack backgroundColor={mainbg} pt={{ base: 2, md: 8 }} pb="10">
+    <Box bgColor="#E3F7FF" pt="120px">
+      <Stack pt={{ base: 2, md: 8 }} pb="10">
         <SearchBar query={query} category={category} />
         <Center mt="7" mb="2">
           <Heading size="xl">
-            {query ? `Listings for "${query}"` : "All Listings"}
+            {query ? `Products matching: "${query}"` : "All Products"}
             {category
               ? ` in ${category.charAt(0).toUpperCase() + category.slice(1)}`
               : ""}
@@ -281,7 +217,7 @@ const Listings = () => {
         </Center>
         {ShowListings(query, category)}
       </Stack>
-    </div>
+    </Box>
   );
 };
 

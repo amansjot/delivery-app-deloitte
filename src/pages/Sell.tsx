@@ -1,26 +1,25 @@
 import {
-    useColorModeValue,
     Heading,
     Center,
     Stack,
+    Box,
   } from "@chakra-ui/react";
   
   const Sell = () => {
-    const mainbg = useColorModeValue("white", "gray.800");
   
     return (
-      <div>
-        <Stack backgroundColor={mainbg} py="60px">
+      <Box bgColor="#E3F7FF" pt="60px">
+        <Stack py="60px">
           <Center>
             {" "}
-            <Heading size="xl">Sell an Item</Heading>
+            <Heading size="xl">My Lists</Heading>
           </Center>
           <br />
-          <Center>
-            
+          <Center height="20vh" fontSize="20px" mb="150px">
+            You have no saved lists!
           </Center>
         </Stack>
-      </div>
+      </Box>
     );
   };
   

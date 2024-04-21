@@ -21,18 +21,22 @@ import { categories, Category } from "../Categories";
 // import Carousel from "../Carousel";
 
 const Home = () => {
-  const mainbg = useColorModeValue("white", "gray.800");
   const greybg = useColorModeValue("gray.300", "gray.700");
   const greytext = useColorModeValue("gray.600", "gray.300");
   const linkcolor = useColorModeValue("blue.500", "blue.300");
 
   return (
-    <div>
+    <Box bgColor="#E3F7FF" pt="60px">
       <Container
         maxW="100%"
         textAlign="center"
         p="25px 0"
-        backgroundColor={mainbg}
+        // backgroundColor={mainbg}
+        // backgroundImage="url('https://i.imgur.com/IW65k4A.png')"
+        // backgroundRepeat="repeat"
+        backgroundColor="#E3F7FF"
+        // backgroundSize="50px 50px"
+        // backgroundPosition="150px 150px"
       >
         <Container maxW="100%" mb="10">
           <Image
@@ -46,7 +50,7 @@ const Home = () => {
             {config.name}
           </Heading>
           <Heading size="md" color="grey">
-            by CS + Social Good
+            We Deliver to You!
           </Heading>
         </Container>
 
@@ -58,7 +62,7 @@ const Home = () => {
             color={linkcolor}
             margin="12px auto 0 auto"
           >
-            {["leases", "couches", "posters"].map(
+            {["bananas", "frozen meals", "cakes"].map(
               (item: string): JSX.Element => {
                 return (
                   <Text margin="0 auto">
@@ -74,16 +78,23 @@ const Home = () => {
       </Container>
       <br />
 
-      <Box backgroundColor={greybg} p="50px 30px">
-        <Center>
-          <Heading size="xl">Categories</Heading>
-        </Center>
+      <Box
+        backgroundColor={greybg}
+        p="50px 30px 70px 30px"
+        // backgroundImage="url('https://blog.lumen.com/wp-content/uploads/2019/09/thumbnail-3546423f9df9db871c3798ca0c3f83a8.jpeg')"
+        background="linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://blog.lumen.com/wp-content/uploads/2019/09/thumbnail-3546423f9df9db871c3798ca0c3f83a8.jpeg')"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+        backgroundAttachment="fixed"
+
+      >
         <Wrap m="32px auto 0 auto" width="900px" maxW="90%">
           {[...categories].map((category: Category) => {
             return (
-              <Box m="8px auto" width={{ base: "100%", sm: "70%", md: "auto" }}>
+              <Box m="10px auto" width={{ base: "100%", sm: "70%", md: "auto" }}>
                 <Link to={"/listings?q=&c=" + category.value}>
-                  <Button p="50px 25px" w="100%">
+                  <Button p="50px 25px" w="100%" backgroundColor="#ffffffcc">
                     <Stack>
                       <Text fontSize="3xl">
                         {category.name || "All"} {category.emoji}
@@ -105,7 +116,7 @@ const Home = () => {
         <br />
         <Center>
           {" "}
-          <Heading size="xl">Recent Listings</Heading>
+          <Heading size="xl">Recently Purchased</Heading>
         </Center>
         <br />
         <Flex wrap="wrap" justifyContent="center">
@@ -113,8 +124,8 @@ const Home = () => {
         </Flex>
         <Center>
           <Link to="/listings">
-            <Button colorScheme="gray" mt="20px" p="25px">
-              <a href="/">View All Listings</a>
+            <Button colorScheme="blue" mt="20px" p="25px">
+              <a href="/">View All Products</a>
             </Button>
           </Link>
         </Center>
@@ -123,7 +134,7 @@ const Home = () => {
       {/* <br />
       <br />
       <Carousel /> */}
-    </div>
+    </Box>
   );
 };
 
