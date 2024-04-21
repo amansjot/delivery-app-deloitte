@@ -1,7 +1,7 @@
 {
     "name": "my-app",
     "version": "0.1.0",
-    "homepage": "https://amansjot.github.io/cssg-project/",
+    "homepage": "https://amansjot.github.io/delivery-app-deloitte/",
     "private": true,
     "dependencies": {
         "@chakra-ui/icons": "^2.1.1",
