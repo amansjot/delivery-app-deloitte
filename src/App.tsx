@@ -26,7 +26,7 @@ function ScrollToTop() {
 
 export const App = () => {
   const baseUrl =
-    process.env.NODE_ENV === "production" ? "/cssg-project/" : "/";
+    process.env.NODE_ENV === "production" ? "/delivery-app-deloitte/" : "/";
 
   return (
     <Router basename={baseUrl}>
