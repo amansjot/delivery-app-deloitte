@@ -1,26 +1,24 @@
 import {
-    useColorModeValue,
     Heading,
     Center,
     Stack,
+    Box,
   } from "@chakra-ui/react";
   
   const Cart = () => {
-    const mainbg = useColorModeValue("white", "gray.800");
   
     return (
-      <div>
-        <Stack backgroundColor={mainbg} py="60px">
+      <Box bgColor="#E3F7FF" pt="60px">
+        <Stack py="60px">
           <Center>
             {" "}
             <Heading size="xl">My Cart</Heading>
           </Center>
           <br />
-          <Center>
-            
+          <Center height="20vh" fontSize="20px" mb="150px"> 
           </Center>
         </Stack>
-      </div>
+      </Box>
     );
   };
   

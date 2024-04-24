@@ -113,7 +113,6 @@ export const Navbar = () => {
 
       {/* icons */}
       <Flex position="absolute" right="20px">
-        <ColorModeSwitcher />
         <Link to="/cart" onClick={setIsOpen.off}>
           <IconButton
             bg="#00539f"
