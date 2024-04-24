@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/delivery-app-deloitte/static/js/main.4380e1d6.js",
+    "main.js": "/delivery-app-deloitte/static/js/main.e1d0cbb0.js",
     "static/js/496.13a8aa01.chunk.js": "/delivery-app-deloitte/static/js/496.13a8aa01.chunk.js",
     "index.html": "/delivery-app-deloitte/index.html",
-    "main.4380e1d6.js.map": "/delivery-app-deloitte/static/js/main.4380e1d6.js.map",
+    "main.e1d0cbb0.js.map": "/delivery-app-deloitte/static/js/main.e1d0cbb0.js.map",
     "496.13a8aa01.chunk.js.map": "/delivery-app-deloitte/static/js/496.13a8aa01.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.4380e1d6.js"
+    "static/js/main.e1d0cbb0.js"
   ]
 }
