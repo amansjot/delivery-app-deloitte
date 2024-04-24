@@ -45,11 +45,20 @@ export const SearchBar = (props: SearchBarProps) => {
   const handleCategoryChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    setCategory(event.target.value);
+    // setCategory(event.target.value);
+    handleSearch(searchQuery, event.target.value);
   };
 
-  const handleSearch = () => {
-    navigate("/listings?q=" + searchQuery + "&c=" + category);
+  const handleSearch = (_q?: string, _c?: string) => {
+    if (typeof _q != "string") {
+      _q = searchQuery;
+    }
+    if (typeof _c != "string") {
+      _c = category
+    }
+    navigate("/listings?q=" + _q + "&c=" + _c);
+    // navigate("/listings?q=" + searchQuery + "&c=" + category);
+    // navigate("/listings?q=" + (_q || searchQuery) + "&c=" + (_c || category));
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -121,7 +130,7 @@ export const SearchBar = (props: SearchBarProps) => {
           h="60px"
           w="60px"
           aria-label="Search catalog"
-          onClick={handleSearch}
+          onClick={() => { handleSearch() }}
           icon={<Search2Icon fontSize="22px" />}
           _hover={{
             bg: "brand.blue",
