@@ -17,7 +17,6 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import config from "./config";
 // import { useState } from "react";
 
